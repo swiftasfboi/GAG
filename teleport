@@ -1,0 +1,51 @@
+-- LocalScript inside StarterPlayerScripts
+local TeleportService = game:GetService("TeleportService")
+local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
+
+local PlaceId = game.PlaceId
+
+-- Function to find a low-population server
+local function findLowServer()
+	local servers = {}
+	local cursor = ""
+	
+	-- Fetch server list (Roblox API)
+	repeat
+		local url = string.format(
+			"https://games.roblox.com/v1/games/%d/servers/Public?sortOrder=Asc&limit=100%s",
+			PlaceId,
+			cursor ~= "" and "&cursor="..cursor or ""
+		)
+		
+		local success, result = pcall(function()
+			return HttpService:JSONDecode(game:HttpGet(url))
+		end)
+		
+		if success and result and result.data then
+			for _, server in ipairs(result.data) do
+				if server.playing < server.maxPlayers then
+					table.insert(servers, server)
+				end
+			end
+			cursor = result.nextPageCursor or ""
+		else
+			break
+		end
+	until cursor == "" or #servers >= 1
+	
+	-- Sort by lowest population
+	table.sort(servers, function(a, b)
+		return a.playing < b.playing
+	end)
+	
+	return servers[1]
+end
+
+-- Main logic
+if #Players:GetPlayers() >= game.Players.MaxPlayers then
+	local lowServer = findLowServer()
+	if lowServer then
+		TeleportService:TeleportToPlaceInstance(PlaceId, lowServer.id, Players.LocalPlayer)
+	end
+end
